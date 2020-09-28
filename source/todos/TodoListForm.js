@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { getTodos } from './selectors';
 // import { createTodo } from './actions';
 import { addTodosRequest } from './thunk'; 
 
@@ -35,7 +36,8 @@ const TodoListForm = ({ todos, onCreatePressed }) => {
 };
 
 const mapStateToProps = state => ({
-    todos: state.todos,
+    // todos: state.todos,
+    todos: getTodos(state),
 
 });
 

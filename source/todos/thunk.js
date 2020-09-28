@@ -4,9 +4,10 @@ import { createTodo, removedTodo, loadTodosInProgress,
 export const loadTodos = () => async(dispatch, getState) => {
     try{
         dispatch(loadTodosInProgress());
-        const response = await fetch('http://localhost:3005/todos');
+        const response = await fetch('http://localhost:8080/todos');
         const todos = await response.json();
-
+        console.log('[thunk.js]>>>');
+        console.log(todos); 
         dispatch( loadTodosSuccess(todos));
     }
     catch(e){
@@ -18,7 +19,7 @@ export const loadTodos = () => async(dispatch, getState) => {
 export const addTodosRequest = text => async dispatch => {
     try{
         const body = JSON.stringify({text});
-        const response = await fetch('http://localhost:3005/todos', {
+        const response = await fetch('http://localhost:8080/todos', {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -26,7 +27,7 @@ export const addTodosRequest = text => async dispatch => {
         body,
     });
         const todo = await response.json();
-        dispatch(createTOdo(todo));
+        dispatch(createTodo(todo));
     }catch(e){
         dispatch(displayAlert(e));
     }
@@ -34,11 +35,12 @@ export const addTodosRequest = text => async dispatch => {
 
 export const removeTodoRequest = id => async dispatch => {
     try{
-        const response = await fetch(`http://localhost3005/todos/${id}`, {
+        console.log(id); 
+        const response = await fetch(`http://localhost:8080/todos/${id}`, {
             method: 'delete'
         });
-        const removedTodo = await response.json();
-        dispatch(removedTodo(removedTodo)); 
+        const removeTodo = await response.json();
+        dispatch(removedTodo(removeTodo)); 
         
     }catch(e){
         dispatch(displayAlert(e));
@@ -47,11 +49,11 @@ export const removeTodoRequest = id => async dispatch => {
 
 export const markCompleteRequest = id => async dispatch => {
     try {
-        const response = await fetch(`https://localhost3005/todos/${id}/completed`, {
+        const response = await fetch(`https://localhost:8080/todos/${id}/completed`, {
             method: 'post'
         });
-        const completedTodo = await response.json();
-        dispatch(markCompleted(completedTodo)); 
+        const todoToComplete = await response.json();
+        dispatch(markCompleted(todoToComplete)); 
 
     }catch(e){
         dispatch(displayAlert(e)); 

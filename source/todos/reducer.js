@@ -25,16 +25,13 @@ export const todos = (state=[], action) => {
     switch (type) {
         case CREATE_TODO : {
             const { todo } = payload;
-            // const newTodo = {
-            //     text,
-            //     isCompleted: false,
-            // };
-            return state.concat(newTodo);
+            return state.concat(todo);
         }
 
         case REMOVED_TODO : {
             const {todo: todoToRemove} = payload;
             // return state.filter(todo => todo.text !== text );
+            console.log(payload, 'reducer.js', todoToRemove.id); 
             return state.filter(todo => todo.id !== todoToRemove.id );
         }
 
