@@ -39,10 +39,12 @@ export const todos = (state=[], action) => {
         }
 
         case COMPLETED_TODO : {
-            const {text} = payload;
+            // const {text} = payload;
+            const {todo: todoToComplete} = payload;
             return state.map( todo => {
-                if(todo.text === text) {
-                    return {...todo, isCompleted: true }
+                if(todo.id === todoToComplete.id) {
+                    // return {...todo, isCompleted: true }
+                    return todoToComplete;
                 }
                 return todo;
             } );
