@@ -1,13 +1,13 @@
 export const CREATE_TODO    = 'CREATE_TODO';
-export const createTodo     = text => ({
+export const createTodo     = todo => ({
     type: CREATE_TODO,
-    payload: {text},
+    payload: {todo},
 });
 
 export const REMOVED_TODO    = 'REMOVED_TODO';
-export const removedTodo     = text => ({
+export const removedTodo     = todo => ({
     type: REMOVED_TODO,
-    payload: {text},
+    payload: {todo},
 });
 
 export const COMPLETED_TODO    = 'COMPLETED_TODO';

@@ -15,6 +15,7 @@ export const isLoading = ( state=false, action ) => {
         default:
             return state;
     }
+
 }
 
 export const todos = (state=[], action) => {
@@ -23,17 +24,18 @@ export const todos = (state=[], action) => {
 
     switch (type) {
         case CREATE_TODO : {
-            const { text } = payload;
-            const newTodo = {
-                text,
-                isCompleted: false,
-            };
+            const { todo } = payload;
+            // const newTodo = {
+            //     text,
+            //     isCompleted: false,
+            // };
             return state.concat(newTodo);
         }
 
         case REMOVED_TODO : {
-            const {text} = payload;
-            return state.filter(todo => todo.text !== text );
+            const {todo: todoToRemove} = payload;
+            // return state.filter(todo => todo.text !== text );
+            return state.filter(todo => todo.id !== todoToRemove.id );
         }
 
         case COMPLETED_TODO : {
@@ -46,7 +48,15 @@ export const todos = (state=[], action) => {
             } );
 
         }
-        
+         
+        //create action for progress, failure and success
+        case LOAD_TODOS_SUCCESS : {
+            //todo loads from server
+            const { todos } = payload;
+            return todos;
+        }
+        case LOAD_TODOS_IN_PROGRESS:
+        case LOAD_TODOS_FAILURE :         
         default: return state;
         
    
