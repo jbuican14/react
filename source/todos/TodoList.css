@@ -1,0 +1,8 @@
+.todo-wrapper::before {
+    content: '';
+    position: absolute;
+    border-bottom: 2px solid transparent;
+    width: 700px;
+    margin: auto;
+}
+
