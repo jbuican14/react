@@ -49,7 +49,7 @@ export const removeTodoRequest = id => async dispatch => {
 
 export const markCompleteRequest = id => async dispatch => {
     try {
-        const response = await fetch(`https://localhost:8080/todos/${id}/completed`, {
+        const response = await fetch(`http://localhost:8080/todos/${id}/completed`, {
             method: 'post'
         });
         const todoToComplete = await response.json();
