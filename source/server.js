@@ -13,6 +13,11 @@ var fakeTodos = [{
     text: 'Get together with friends',
     isCompleted: false,
     createdAt: new Date(Date.now() - 86400000 * 7),
+},{
+    id: 'cda9165d-c263-4ef6-af12-3f1271af5fb6',
+    text: 'Walk the dog',
+    isCompleted: false,
+    createdAt: new Date(Date.now() - 86400000 * 7),
 }, {
     id: '2e538cc5-b734-4771-a109-dfcd204bb38b',
     text: 'Buy groceries',
