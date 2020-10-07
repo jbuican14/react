@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { createTodo } from './actions';
+import { connect }  from 'react-redux';
+import { getTodos } from './selectors';
+// import { createTodo } from './actions';
+import { addTodosRequest } from './thunk'; 
 
 import './TodoListForm.css'; 
 
@@ -34,12 +36,14 @@ const TodoListForm = ({ todos, onCreatePressed }) => {
 };
 
 const mapStateToProps = state => ({
-    todos: state.todos,
+    // todos: state.todos,
+    todos: getTodos(state),
 
 });
 
 const mapDispatchToProps = dispatch => ({
-    onCreatePressed : text => dispatch(createTodo(text))
+    // onCreatePressed : text => dispatch(createTodo(text))
+    onCreatePressed : text => dispatch(addTodosRequest(text))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (TodoListForm);
